@@ -22,6 +22,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? verticalPadding;
   final bool disabled;
+  final bool isLoading;
 
   const CustomButton({
     Key? key,
@@ -44,6 +45,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.verticalPadding,
     this.disabled = false,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
@@ -76,25 +78,38 @@ class CustomButton extends StatelessWidget {
                     ),
                   ],
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  text,
-                  style: Get.theme.textTheme.bodyLarge?.copyWith(
-                    fontSize: fontSize,
-                    fontWeight: fontWeight,
-                    color: foregroundColor ?? Colors.white,
+            child: isLoading
+                ? Center(
+                    child: SizedBox(
+                      width: 24.w,
+                      height: 24.h,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          foregroundColor ?? Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                : Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        text,
+                        style: Get.theme.textTheme.bodyLarge?.copyWith(
+                          fontSize: fontSize,
+                          fontWeight: fontWeight,
+                          color: foregroundColor ?? Colors.white,
+                        ),
+                      ),
+                      if (icon != null)
+                        SizedBox(
+                          width: spacing ?? 10.w,
+                        ),
+                      if (icon != null) icon!
+                    ],
                   ),
-                ),
-                if (icon != null)
-                  SizedBox(
-                    width: spacing ?? 10.w,
-                  ),
-                if (icon != null) icon!
-              ],
-            ),
           ),
         ),
       ),

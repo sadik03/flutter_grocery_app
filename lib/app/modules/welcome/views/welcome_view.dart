@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../utils/constants.dart';
 import '../../../components/custom_button.dart';
 import '../../../data/local/my_shared_pref.dart';
-import '../../../routes/app_pages.dart';
 import '../controllers/welcome_controller.dart';
 
 class WelcomeView extends GetView<WelcomeController> {
@@ -67,8 +66,8 @@ class WelcomeView extends GetView<WelcomeController> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 70.w),
                   child: CustomButton(
-                    text: 'Shop now',
-                    onPressed: () => Get.offNamed(Routes.BASE),
+                    text: 'Get Started',
+                    onPressed: controller.goToLogin,
                     fontSize: 16.sp,
                     radius: 50.r,
                     verticalPadding: 16.h,

@@ -1,3 +1,9 @@
 import 'package:get/get.dart';
 
-class WelcomeController extends GetxController {}
+import '../../../routes/app_pages.dart';
+
+class WelcomeController extends GetxController {
+  void goToLogin() {
+    Get.toNamed(Routes.LOGIN);
+  }
+}

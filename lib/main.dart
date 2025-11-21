@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'app/data/local/my_shared_pref.dart';
+import 'app/data/services/auth_service.dart';
 import 'app/routes/app_pages.dart';
 import 'config/theme/my_theme.dart';
 import 'config/translations/localization_service.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   // wait for bindings
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   // init shared preference
   await MySharedPref.init();
+
+  // Initialize AuthService
+  await Get.putAsync(() => AuthService().init());
 
   runApp(
     ScreenUtilInit(

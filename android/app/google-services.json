@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "386991008585",
+    "project_id": "instatest-78475",
+    "storage_bucket": "instatest-78475.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386991008585:android:55d8cb6d3987bab8928898",
+        "android_client_info": {
+          "package_name": "com.example.flutter_grocery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJDIjmX8dVnuHtYJ3zWQCf_1IoWz5aIwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
