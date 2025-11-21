@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'app/bindings/app_binding.dart';
 import 'app/data/local/my_shared_pref.dart';
-import 'app/data/services/auth_service.dart';
 import 'app/routes/app_pages.dart';
 import 'config/theme/my_theme.dart';
 import 'config/translations/localization_service.dart';
@@ -22,8 +22,9 @@ Future<void> main() async {
   // init shared preference
   await MySharedPref.init();
 
-  // Initialize AuthService
-  await Get.putAsync(() => AuthService().init());
+  // Initialize all bindings
+  final appBinding = AppBinding();
+  await appBinding.dependencies();
 
   runApp(
     ScreenUtilInit(
